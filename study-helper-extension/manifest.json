@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "课程学习整理助手",
+  "version": "2.0.0",
+  "description": "A local-first Chrome extension for organizing questions, notes, and review status without answer fetching or page injection.",
+  "permissions": ["storage"],
+  "action": {
+    "default_title": "课程学习整理助手",
+    "default_popup": "popup.html"
+  },
+  "homepage_url": "https://github.com/jiajiayao/ZhiHuiShu_Get_Answer_chrome_plugins"
+}

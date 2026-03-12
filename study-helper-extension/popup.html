@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>课程学习整理助手</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <p class="eyebrow">Local-first study helper</p>
+      <h1>课程学习整理助手</h1>
+      <p class="subtitle">手动整理题目、解析、易错点和复习状态。所有数据仅保存在浏览器本地。</p>
+    </section>
+
+    <section class="panel panel-form">
+      <div class="panel-header">
+        <h2>新增学习条目</h2>
+        <button id="clear-form" class="ghost-button" type="button">清空表单</button>
+      </div>
+
+      <form id="entry-form">
+        <label class="field">
+          <span>课程 / 主题</span>
+          <input id="course" name="course" type="text" maxlength="80" placeholder="例如：高等数学 / 数据结构">
+        </label>
+
+        <label class="field">
+          <span>题目或知识点</span>
+          <textarea id="question" name="question" rows="4" maxlength="1200" placeholder="手动粘贴题目、概念或复习问题" required></textarea>
+        </label>
+
+        <label class="field">
+          <span>你的解析</span>
+          <textarea id="analysis" name="analysis" rows="5" maxlength="1600" placeholder="记录自己的思路、解题步骤或为什么容易错" required></textarea>
+        </label>
+
+        <label class="field">
+          <span>关键结论</span>
+          <textarea id="takeaways" name="takeaways" rows="3" maxlength="600" placeholder="可选：归纳公式、口诀、判断标准"></textarea>
+        </label>
+
+        <div class="field-row">
+          <label class="field">
+            <span>复习状态</span>
+            <select id="status" name="status">
+              <option value="new">待消化</option>
+              <option value="reviewing">复习中</option>
+              <option value="mastered">已掌握</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>标签</span>
+            <input id="tags" name="tags" type="text" maxlength="120" placeholder="例如：极限, 证明题">
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="primary-button" type="submit">保存条目</button>
+          <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel panel-library">
+      <div class="panel-header">
+        <h2>学习库</h2>
+        <button id="export-json" class="ghost-button" type="button">导出 JSON</button>
+      </div>
+
+      <div class="toolbar">
+        <label class="field compact-field">
+          <span>搜索</span>
+          <input id="search" type="search" placeholder="按课程、题目、标签筛选">
+        </label>
+
+        <label class="field compact-field">
+          <span>状态</span>
+          <select id="status-filter">
+            <option value="all">全部</option>
+            <option value="new">待消化</option>
+            <option value="reviewing">复习中</option>
+            <option value="mastered">已掌握</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="stats" id="stats"></div>
+      <div class="entry-list" id="entry-list"></div>
+      <template id="empty-state-template">
+        <div class="empty-state">
+          <p>还没有学习条目。</p>
+          <p>先录入一道题目或一个知识点，再把自己的理解写下来。</p>
+        </div>
+      </template>
+    </section>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
